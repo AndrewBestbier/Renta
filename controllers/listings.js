@@ -32,9 +32,17 @@ exports.getCreateListing = function(req, res) {
 
 
 exports.createListing = function(req, res) {
+  console.log(req.body);
+
   var listing = new Listing({
+    title: req.body.title,
     description: req.body.description,
-    furnished: req.body.furnished
+    bathrooms: req.body.bathrooms,
+    bedrooms: req.body.bedrooms,
+    garages: req.body.garages,
+    lat: req.body.lat,
+    lon: req.body.lon,
+    rent: req.body.rent
   });
 
   listing.save(function(err) {

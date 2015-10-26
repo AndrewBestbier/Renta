@@ -7,28 +7,25 @@ block content
         .property-box-image
           a(href='#')
             img(src='/img/example.jpg')
-            span.property-box-excerpt
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ipsum nibh. Vivamus vehicula consequat justo, id molestie nisl feugiat dignissim. Nam a blandit leo, a porta nisl.
-        // /.property-image
+            span.property-box-excerpt=listing.description
         .property-box-content
           .property-box-meta
             .property-box-meta-item
-              span Baths
-              strong 2
+              span Bathrooms
+              strong=listing.bathrooms
             // /.property-box-meta-item
             .property-box-meta-item
-              span Beds
-              strong 4
+              span Bedrooms
+              strong=listing.bedrooms
             // /.property-box-meta-item
             .property-box-meta-item
               span Garages
-              strong 1
+              strong=listing.garages
             // /.property-box-meta-item
           // /.property-box-meta
         // /.property-box-content
         .property-box-bottom
-          .property-box-price
-            | R7,000
+          .property-box-price=listing.rent
           // /.property-box-price
           a.property-box-view(href='#')
             | View Detail

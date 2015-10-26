@@ -1,26 +1,68 @@
 extends layout
 
 block content
-  .page-header
-    h3 Create Listing
-
-  form.form-horizontal(action='/listings/create', method='POST')
+  .main
+  form(action='/listings/create', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='email') Description
-      .col-sm-7
-        input.form-control(type='text', name='description', id='description')
-    .form-group
-      label.col-sm-3.control-label(for='furnished') Furnished
-      .col-sm-4
-        label.radio.col-sm-4
-          input(type='radio', name='furnished', value='Furnished', data-toggle='radio')
-          span Furnished
-        label.radio.col-sm-4
-          input(type='radio', name='furnished', value='Unfurnished', data-toggle='radio')
-          span Unfurnished
-    .form-group
-      .col-sm-offset-3.col-sm-4
-        button.btn.btn.btn-primary(type='submit')
-          i.fa.fa-pencilr
-          | Create Listing
+    .container
+      .row
+        .content.col-sm-12
+          h1.page-header Submit Property
+          .box
+            .form-group
+              input.form-control(type='text', placeholder='Title', name='title')
+            .form-group
+              textarea.form-control(placeholder='Property Description', name='description')
+        .content.col-sm-12
+          h2.page-header Details
+          .box
+            .row
+              .col-sm-12
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-dollar
+                  input.form-control(type='text', placeholder='Rent', name='rent')
+                  
+                  span.input-group-addon
+                    i.fa.fa-tint
+                  input.form-control(type='text', placeholder='Bathrooms', name='bathrooms')
+                  // /.form-group
+                  .input-group
+                  span.input-group-addon
+                    i.fa.fa-picture-o
+                  input.form-control(type='text', placeholder='Bedrooms', name='bedrooms')
+                  // /.form-group
+                  .input-group
+                  span.input-group-addon
+                    i.fa.fa-car
+                  input.form-control(type='text', placeholder='Garages', name='garages')
+                  // /.form-group
+          h2.page-header Location
+          .box
+            input#pac-input.controls(type='text', placeholder='Enter a location')
+            #map-canvas
+            .row
+              .col-sm-6
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-map-marker
+                  input#input-latitude.form-control(type='text', placeholder='Latitude', name='lat')
+                // /.form-group
+              // /.col-*
+              .col-sm-6
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-map-marker
+                  input#input-longitude.form-control(type='text', placeholder='Longitude', name='lon')
+
+          .center
+            button.btn.btn-xl(type='submit')
+              | Submit Property Listing
+              small I agree with Terms & Conditions
+// /.center
+
+
+
+            
+            
+          
