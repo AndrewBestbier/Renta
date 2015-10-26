@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .page-header
+    h3 Create Listing
+
+  form.form-horizontal(action='/listings/create', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') Description
+      .col-sm-7
+        input.form-control(type='text', name='description', id='description')
+    .form-group
+      label.col-sm-3.control-label(for='furnished') Furnished
+      .col-sm-4
+        label.radio.col-sm-4
+          input(type='radio', name='furnished', value='Furnished', data-toggle='radio')
+          span Furnished
+        label.radio.col-sm-4
+          input(type='radio', name='furnished', value='Unfurnished', data-toggle='radio')
+          span Unfurnished
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencilr
+          | Create Listing

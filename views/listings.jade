@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  for listing in listings
+    .col-sm-6.col-md-4
+      .property-box
+        .property-box-image
+          a(href='#')
+            img(src='/img/example.jpg')
+            span.property-box-excerpt
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ipsum nibh. Vivamus vehicula consequat justo, id molestie nisl feugiat dignissim. Nam a blandit leo, a porta nisl.
+        // /.property-image
+        .property-box-content
+          .property-box-meta
+            .property-box-meta-item
+              span Baths
+              strong 2
+            // /.property-box-meta-item
+            .property-box-meta-item
+              span Beds
+              strong 4
+            // /.property-box-meta-item
+            .property-box-meta-item
+              span Garages
+              strong 1
+            // /.property-box-meta-item
+          // /.property-box-meta
+        // /.property-box-content
+        .property-box-bottom
+          .property-box-price
+            | R7,000
+          // /.property-box-price
+          a.property-box-view(href='#')
+            | View Detail
+          // /.property-box-view
+        // /.property-box-bottom
+      // /.property-box
+
+
+          
+
+  
