@@ -47,10 +47,6 @@ html {
 body {
   margin: 0; }
 
-.content-wrapper {
-  padding-top: 20px;
-}
-
 article,
 aside,
 details,
@@ -6763,7 +6759,6 @@ button.btn, button.btn-secondary {
       display: block;
       font-weight: 500;
       padding: 16px 20px;
-      margin-bottom: -23px;
       position: relative;
       text-transform: uppercase;
       transition: color .15s linear; }
@@ -6781,7 +6776,7 @@ button.btn, button.btn-secondary {
         background-color: transparent;
         color: #fff; }
         .header-minimal .header-navigation .nav li a:hover {
-          color: #424242; }
+          color: #FFFFFF; }
       .header-navigation .nav li a:focus {
         background-color: transparent;
         border-radius: 0px;
@@ -6797,7 +6792,7 @@ button.btn, button.btn-secondary {
         transition: background-color .15s linear;
         width: 100%; }
         .header-minimal .header-navigation .nav li a:after {
-          bottom: 13px; }
+          bottom: -10px; }
     .header-navigation .nav li.important > a {
       color: #fff;
       font-weight: 600; }
@@ -6815,7 +6810,7 @@ button.btn, button.btn-secondary {
       background-color: transparent !important;
       color: #fff; }
       .header-minimal .header-navigation .nav li.active > a {
-        color: #FFFFFF; }
+        color: #424242; }
       .header-navigation .nav li.active > a:after {
         background-color: #E91E63; }
         .header-standard .header-navigation .nav li.active > a:after {
