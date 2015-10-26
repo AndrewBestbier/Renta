@@ -28,6 +28,8 @@
                     if !user
                       li(class=title=='Login'?'important':undefined)
                         a(href='/login') Login
+                      li(class=title=='Create Account'?'important':undefined)
+                        a(href='/signup') Sign Up
                     else
                       li
                         a(href='/logout') Logout
