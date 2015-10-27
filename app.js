@@ -11,7 +11,8 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var lusca = require('lusca');
 var methodOverride = require('method-override');
-
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
 var _ = require('lodash');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('express-flash');
@@ -79,11 +80,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+/*
 app.use(lusca({
-  csrf: true,
+  csrf: false,
   xframe: 'SAMEORIGIN',
   xssProtection: true
-}));
+})); */
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
@@ -121,6 +123,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
   */
 app.get('/api', apiController.getApi);
 
+app.post('/listings/upload', upload.array('uploadWorld', 12), listingsController.uploadPhoto);
 app.get('/listings', listingsController.listings);
 app.get('/listings/create', listingsController.getCreateListing);
 app.post('/listings/create', passportConf.isAuthenticated, listingsController.createListing);

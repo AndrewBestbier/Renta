@@ -1,4 +1,11 @@
 var Listing = require('../models/Listing');
+var cloudinary = require('cloudinary');
+
+cloudinary.config({
+  cloud_name: 'dn0hqfaeu',
+  api_key: '183116552154436',
+  api_secret: '79TRWaeF6t7Mi1tGr_zaujwH994'
+});
 
 /**
  * GET /
@@ -30,10 +37,18 @@ exports.getCreateListing = function(req, res) {
   });
 };
 
+exports.uploadPhoto = function(req, res) {
+
+  cloudinary.uploader.upload(req.files[0].path, function(result) {
+    res.send({
+      path: result.url
+    });
+  });
+}
 
 exports.createListing = function(req, res) {
-  console.log(req.body);
 
+  /*
   var listing = new Listing({
     title: req.body.title,
     description: req.body.description,
@@ -43,10 +58,19 @@ exports.createListing = function(req, res) {
     lat: req.body.lat,
     lon: req.body.lon,
     rent: req.body.rent
-  });
+  }); */
 
+  //console.log(req.body.upload);
+
+  console.log(req.body.upload);
+  /*
+  cloudinary.uploader.upload(req.body.upload, function(result) {
+  console.log(result)
+}); */
+  /*
   listing.save(function(err) {
     req.flash('success', { msg: 'Listing Created' });
     res.redirect('/listings');
-  });
+  }); */
+  res.redirect('/listings');
 };

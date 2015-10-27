@@ -2,7 +2,7 @@ extends layout
 
 block content
   .main
-  form(action='/listings/create', method='POST')
+  form(action='/listings/create', method='POST', enctype='multipart/form-data')
     input(type='hidden', name='_csrf', value=_csrf)
     .container
       .row
@@ -54,7 +54,9 @@ block content
                   span.input-group-addon
                     i.fa.fa-map-marker
                   input#input-longitude.form-control(type='text', placeholder='Longitude', name='lon')
-
+          h2.page-header Image Upload
+          .box
+            input(type="file", id="input-file", name="uploadWorld")
           .center
             button.btn.btn-xl(type='submit')
               | Submit Property Listing
