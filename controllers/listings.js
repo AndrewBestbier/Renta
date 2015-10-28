@@ -37,40 +37,30 @@ exports.getCreateListing = function(req, res) {
   });
 };
 
-exports.uploadPhoto = function(req, res) {
 
-  cloudinary.uploader.upload(req.files[0].path, function(result) {
-    res.send({
-      path: result.url
-    });
-  });
-}
 
 exports.createListing = function(req, res) {
 
-  /*
-  var listing = new Listing({
-    title: req.body.title,
-    description: req.body.description,
-    bathrooms: req.body.bathrooms,
-    bedrooms: req.body.bedrooms,
-    garages: req.body.garages,
-    lat: req.body.lat,
-    lon: req.body.lon,
-    rent: req.body.rent
-  }); */
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    //TODO error check
+    var listing = new Listing({
+      title: req.body.title,
+      description: req.body.description,
+      bathrooms: req.body.bathrooms,
+      bedrooms: req.body.bedrooms,
+      garages: req.body.garages,
+      lat: req.body.lat,
+      lon: req.body.lon,
+      rent: req.body.rent,
+      img: result.url
+    });
 
-  //console.log(req.body.upload);
+    listing.save(function(err) {
+      //Todo error check
+      req.flash('success', { msg: 'Listing Created' });
+      res.redirect('/listings');
+    });
 
-  console.log(req.body.upload);
-  /*
-  cloudinary.uploader.upload(req.body.upload, function(result) {
-  console.log(result)
-}); */
-  /*
-  listing.save(function(err) {
-    req.flash('success', { msg: 'Listing Created' });
-    res.redirect('/listings');
-  }); */
-  res.redirect('/listings');
+    //Todo delete images once uploaded
+  });
 };

@@ -2,7 +2,7 @@ extends layout
 
 block content
   .main
-  form(action='/listings/create', method='POST', enctype='multipart/form-data')
+  form(action='/listings/create', method='POST', enctype="multipart/form-data")
     input(type='hidden', name='_csrf', value=_csrf)
     .container
       .row
@@ -56,12 +56,11 @@ block content
                   input#input-longitude.form-control(type='text', placeholder='Longitude', name='lon')
           h2.page-header Image Upload
           .box
-            input(type="file", id="input-file", name="uploadWorld")
+            input(type="file", name="upload")
           .center
             button.btn.btn-xl(type='submit')
               | Submit Property Listing
               small I agree with Terms & Conditions
-// /.center
 
 
 

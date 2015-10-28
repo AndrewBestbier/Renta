@@ -123,10 +123,10 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
   */
 app.get('/api', apiController.getApi);
 
-app.post('/listings/upload', upload.array('uploadWorld', 12), listingsController.uploadPhoto);
+//app.post('/listings/upload', upload.array('uploadWorld', 12), listingsController.uploadPhoto);
 app.get('/listings', listingsController.listings);
 app.get('/listings/create', listingsController.getCreateListing);
-app.post('/listings/create', passportConf.isAuthenticated, listingsController.createListing);
+app.post('/listings/create', passportConf.isAuthenticated, upload.single('upload'), listingsController.createListing);
 app.get('/listings/:listingId', listingsController.getListing);
 
 /**

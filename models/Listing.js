@@ -9,7 +9,8 @@ var listing = new Schema({
   garages: Number,
   lat: Number,
   lon: Number,
-  rent: Number
+  rent: Number,
+  img: String
 });
 
 var Listing = mongoose.model('listing', listing);
