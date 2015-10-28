@@ -21,6 +21,19 @@ exports.listings = function(req, res) {
   });
 };
 
+exports.filterListings = function(req, res) {
+  var rooms = req.param('rooms')
+
+  Listing.find({
+    bedrooms: rooms
+  }, function(err, filterdListings) {
+    res.render('listings', {
+      title: 'Listings',
+      listings: filterdListings
+    });
+  })
+};
+
 exports.getListing = function(req, res, next) {
   var listingId = req.params.listingId;
   Listing.findById(listingId, function(err, listing) {
@@ -30,6 +43,7 @@ exports.getListing = function(req, res, next) {
     });
   });
 };
+
 
 exports.getCreateListing = function(req, res) {
   res.render('createListing', {
@@ -57,7 +71,9 @@ exports.createListing = function(req, res) {
 
     listing.save(function(err) {
       //Todo error check
-      req.flash('success', { msg: 'Listing Created' });
+      req.flash('success', {
+        msg: 'Listing Created'
+      });
       res.redirect('/listings');
     });
 

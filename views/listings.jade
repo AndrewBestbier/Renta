@@ -1,39 +1,59 @@
 extends layout
 
 block content
-  for listing in listings
-    .col-sm-6.col-md-4
-      .property-box
-        .property-box-image
-          a(href='#')
-            img(src=listing.img)
-            span.property-box-excerpt=listing.description
-        .property-box-content
-          .property-box-meta
-            .property-box-meta-item
-              span Bathrooms
-              strong=listing.bathrooms
-            // /.property-box-meta-item
-            .property-box-meta-item
-              span Bedrooms
-              strong=listing.bedrooms
-            // /.property-box-meta-item
-            .property-box-meta-item
-              span Garages
-              strong=listing.garages
-            // /.property-box-meta-item
-          // /.property-box-meta
-        // /.property-box-content
-        .property-box-bottom
-          .property-box-price=listing.rent
-          // /.property-box-price
-          a.property-box-view(href='#')
-            | View Detail
-          // /.property-box-view
-        // /.property-box-bottom
-      // /.property-box
+  .sidebar.col-sm-4.col-md-3
+    .widget
+      .widget-title
+        h2 Filter Properties
+      // /.widget-title
+      .widget-content
+        form(method='get', action='/listings/filter')
+          .form-group
+            h5 bedrooms
+            select(name='rooms')
+              option 1
+              option 2
 
+          button.btn.btn-lg.btn-block Search
+      // /.widget-content
+    // /.widget
+  .container
+    .row
+      .content.col-sm-8.col-md-9
+        .row
+          for listing in listings
+            .col-sm-6.col-md-4
+              .property-box
+                .property-box-image
+                  a(href='#')
+                    img(src=listing.img)
+                    span.property-box-excerpt=listing.description
+                .property-box-content
+                  .property-box-meta
+                    .property-box-meta-item
+                      span Bathrooms
+                      strong=listing.bathrooms
+                    // /.property-box-meta-item
+                    .property-box-meta-item
+                      span Bedrooms
+                      strong=listing.bedrooms
+                    // /.property-box-meta-item
+                    .property-box-meta-item
+                      span Garages
+                      strong=listing.garages
+                    // /.property-box-meta-item
+                  // /.property-box-meta
+                // /.property-box-content
+                .property-box-bottom
+                  .property-box-price R #{listing.rent}
+                  // /.property-box-price
+                  a.property-box-view(href='#')
+                    | View Detail
+                  // /.property-box-view
+                // /.property-box-bottom
+              // /.property-box
+
+
+                  
 
           
-
-  
