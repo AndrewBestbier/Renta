@@ -22,10 +22,15 @@ exports.listings = function(req, res) {
 };
 
 exports.filterListings = function(req, res) {
-  var rooms = req.param('rooms')
+  var bedrooms = req.param('bedrooms');
+  var bathrooms = req.param('bathrooms');
+  var priceFrom = req.param('price-from');
+  var priceTo = req.param('price-to');
 
   Listing.find({
-    bedrooms: rooms
+    bedrooms: bedrooms,
+    bathrooms: bathrooms,
+    rent: { $gt: priceFrom, $lt: priceTo },
   }, function(err, filterdListings) {
     res.render('listings', {
       title: 'Listings',

@@ -1,4 +1,55 @@
 extends layout
 
 block content
-    h2= listing
+  .page-wrapper
+    .main
+      .container
+        .row
+          .content.col-sm-8.col-md-9
+            .row
+              .col-sm-12.col-md-7
+                .property-gallery
+                  .property-gallery-preview
+                    a(href='#')
+                      img(src=listing.img, alt='')
+              .col-sm-12.col-md-5
+                .property-list
+                  dl
+                    dt Price
+                    dd=listing.rent
+                    dt Location
+                    dd Cape Town
+                    dt Sublocation
+                    dd Rondebosch
+                    dt Garages
+                    dd=listing.garages
+                    dt Beds
+                    dd=listing.bedrooms
+                    dt Baths
+                    dd=listing.bathrooms
+            .mb30
+              h2 Description
+              p.text=listing.description
+              h2.page-header Position on Map
+            .map-property
+              #map-property
+          .sidebar.col-sm-4.col-md-3
+            .widget
+              .widget-title
+                h2 Enquire Now
+              // /.widget-title
+              .widget-content
+                form(method='post', action='?')
+                  .form-group
+                    input.form-control(type='text', placeholder='Name')
+                  // /.form-group
+                  .form-group
+                    input.form-control(type='email', placeholder='E-mail')
+                  // /.form-group
+                  .form-group
+                    textarea.form-control(placeholder='Message')
+                  // /.form-group
+                  button.btn.pull-right Post Message
+              // /.widget-content
+            // /.widget
+          
