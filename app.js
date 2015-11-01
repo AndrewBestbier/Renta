@@ -125,7 +125,6 @@ app.get('/api', apiController.getApi);
 
 
 app.get('/listings', listingsController.listings);
-app.get('/listings/filter', listingsController.filterListings);
 app.get('/listings/create', listingsController.getCreateListing);
 app.post('/listings/create', passportConf.isAuthenticated, upload.single('upload'), listingsController.createListing);
 app.get('/listings/:listingId', listingsController.getListing);

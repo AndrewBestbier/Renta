@@ -13,30 +13,38 @@ cloudinary.config({
  */
 exports.listings = function(req, res) {
 
-  Listing.find(function(err, listings) {
-    res.render('listings', {
-      title: 'Listings',
-      listings: listings
-    });
-  });
-};
-
-exports.filterListings = function(req, res) {
   var bedrooms = req.param('bedrooms');
   var bathrooms = req.param('bathrooms');
   var priceFrom = req.param('price-from');
   var priceTo = req.param('price-to');
 
-  Listing.find({
-    bedrooms: bedrooms,
-    bathrooms: bathrooms,
-    rent: { $gt: priceFrom, $lt: priceTo },
-  }, function(err, filterdListings) {
+
+  var filter = {};
+
+  if(bedrooms){
+      filter.bedrooms = bedrooms;
+  }
+
+  if(bathrooms){
+      filter.bathrooms = bathrooms;
+  }
+
+  if(priceFrom && priceTo){
+    filter.rent = { $gt: priceFrom, $lt: priceTo };
+  } else if(priceFrom){
+    filter.rent = { $gt: priceFrom};
+  } else if (priceTo){
+    filter.rent = { $lt: priceTo};
+  }
+
+
+  Listing.find(filter, function(err, listings) {
     res.render('listings', {
       title: 'Listings',
-      listings: filterdListings
+      listings: listings,
+      filter: filter
     });
-  })
+  });
 };
 
 exports.getListing = function(req, res, next) {

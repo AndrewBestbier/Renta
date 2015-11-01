@@ -7,25 +7,37 @@ block content
         h2 Filter Properties
       // /.widget-title
       .widget-content
-        form(method='get', action='/listings/filter')
+        form(method='get', action='/listings/')
             
           .row
             .form-group.col-sm-6
               label Bedrooms
-              input#vertical_filter_widget-2_price_from.form-control(type='text', name='bedrooms', value='')
-            // /.form-group
+              if filter.bedrooms
+                input#vertical_filter_widget-2_price_from.form-control(type='text', name='bedrooms', value='#{filter.bedrooms}')
+              else
+                input#vertical_filter_widget-2_price_from.form-control(type='text', name='bedrooms', value='')
+                
             .form-group.col-sm-6
               label Bathrooms
-              input#vertical_filter_widget-2_price_to.form-control(type='text', name='bathrooms', value='')
+              if filter.bathrooms
+                input#vertical_filter_widget-2_price_to.form-control(type='text', name='bathrooms', value='#{filter.bathrooms}')
+              else
+                input#vertical_filter_widget-2_price_to.form-control(type='text', name='bathrooms', value='')
             // /.form-group
           .row
             .form-group.col-sm-6
               label Price from
-              input#vertical_filter_widget-2_price_from.form-control(type='text', name='price-from', value='')
+              if filter.rent && filter.rent.$gt
+                input#vertical_filter_widget-2_price_from.form-control(type='text', name='price-from', value='#{filter.rent.$gt}')
+              else 
+                input#vertical_filter_widget-2_price_from.form-control(type='text', name='price-from', value='')
             // /.form-group
             .form-group.col-sm-6
               label Price to
-              input#vertical_filter_widget-2_price_to.form-control(type='text', name='price-to', value='')
+              if filter.rent && filter.rent.$lt
+                input#vertical_filter_widget-2_price_to.form-control(type='text', name='price-to', value='#{filter.rent.$lt}')
+              else
+                input#vertical_filter_widget-2_price_to.form-control(type='text', name='price-to', value='')
             // /.form-group
 
           button.btn.btn-lg.btn-block(type='submit') Filter
@@ -39,7 +51,7 @@ block content
             .col-sm-6.col-md-4
               .property-box
                 .property-box-image
-                  a(href='listings/'+'#{listing.id}')
+                  a(href='/listings/'+'#{listing.id}')
                     img(src=listing.img)
                     span.property-box-excerpt=listing.description
                 .property-box-content
@@ -61,7 +73,7 @@ block content
                 .property-box-bottom
                   .property-box-price R #{listing.rent}
                   // /.property-box-price
-                  a.property-box-view(href='listings/'+'#{listing.id}')
+                  a.property-box-view(href='/listings/'+'#{listing.id}')
                     | View Detail
                   // /.property-box-view
                 // /.property-box-bottom
